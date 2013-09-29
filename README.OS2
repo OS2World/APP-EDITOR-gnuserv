@@ -1,0 +1,113 @@
+/********************************************************
+*
+*   gnuserv, gnuclient, gnudoit for Emacs under Os/2
+*
+********************************************************/
+
+Chris McKillop
+cdmckill@novice.uwaterloo.ca
+July 17th, 1997
+
+
+
+**** See the README for what this package is all about. ****
+
+**** See LICENSE for information on the GNU license ****
+
+
+
+Intro:
+---------------
+
+    Having used gnuserv/gnuclient/gnudoit under WinNT and all the UNIX
+platforms I use Emacs under, I was sick and tired of having to use
+emacsclient under OS/2.  I like the way this server interacts with
+Emacs, and I like to have things the same across all platforms I use.
+So, I set out to port it over.
+
+
+    After doing the first port of the UNIX source using TCP/IP, I
+(and others) ran into problems because OS/2 just isn't exactly the same
+as UNIX when it comes to its TCP/IP config (file locations, interfaces, etc).
+At first this wasn't a big deal to me, but then things got flaky on MY
+machine and I did a total rewrite using OS/2's shared memory interface.
+
+
+
+Setup:
+---------------
+
+    * Copy all the .exe files to your emacs bin directory and the
+      .el file to you emacs lisp directory.
+
+
+    * Add the lines,
+
+	(require 'gnuserv)
+	(gnuserv-start )
+
+      To either your .emacs (_emacs) or your site-start.el.
+
+    * Now you are set!
+
+	* You can now use gnuclient and gnudoit to make emacs do things.
+
+
+
+
+
+Changes Made To Original Source:
+---------------------------------------
+
+    Lots.  Basically the original source was only used to get a feel
+for how things worked.
+
+
+
+
+Release History:
+-------------------------
+
+
+    May 15th, 1997: First Release
+
+	* Fixed pathname problems.  Original source assumed
+	  UNIX / based path names and this had to be changed 
+	  to support OS/2's drive based approch.
+
+	* Changed IP address lookup so that it only resolved
+	  localhost.  This could be changed to use
+	  a local hosts file, but probably isn't
+	  really needed.
+
+	* Added code to gnuserv.exe to remove itself from the
+          window list.  This really annoyed me and I was
+	  glad that it was an easy thing to fix.
+
+
+	
+    May 15th, 1997: Second Release
+
+	* Fixed slash problem when using gnuclient from WPS
+      normal OS/2 command shell.
+
+
+
+    July 17th, 1997: Complete Rewrite
+
+	* Did a full native OS/2 version using shared memory instead
+       of tcpip sockets.
+    
+	* New version is faster and smaller than old release.
+	
+	* This version used Watcom's C compilier instead of gcc/emx.
+
+
+
+
+
+Outstanding Issues:
+------------------------
+
+    * Unsure if UNC pathnames work properly.  Will test myself once
+      I have my LAN setup in my apartment.
