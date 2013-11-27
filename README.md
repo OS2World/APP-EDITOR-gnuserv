@@ -9,7 +9,7 @@ LICENSE
 
 COMPILE TOOLS
 ===============
-* 
+* Open Watcom
 
 AUTHORS
 ===============
